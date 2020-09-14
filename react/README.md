@@ -1,4 +1,4 @@
-# RecipeApp
+# RecipeApp - React Version
 
 ### User Stories
 - [ ] User can see a list of recipe titles
