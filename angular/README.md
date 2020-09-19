@@ -1,14 +1,12 @@
-# RecipeApp - Angular Version
+# Movie Database App - Angular
 
 ### User Stories
-- [ ] User can see a list of recipe titles
-- [ ] User can click a recipe title to display a recipe card containing more details.
-- [ ] User can create an account on the app.
-- [ ] User can create/edit/delete his own recipes.
-- [ ] User can add a recipe to his favorite list.
+-   [ ] User can see all the latest movie on the front page
+-   [ ] User scroll down to see all other movies according to release date
+-   [ ] User can click on any of the movie to go to their own separate page
+-   [ ] User can then see all about the movie ratings, about, actors present on each separate movie page
 
-### Bonus features
-- [ ] User can save an external recipe as his own.
-- [ ] User can search for a recipe not in the list of recipe titles by entering the meal name into a search box and clicking a 'Search' button.
-- [ ] User can see a list of recipes matching the search terms
-- [ ] User can see a warning message if no matching recipe was found.
+## Bonus features
+
+-   [ ] User can create an account
+-   [ ] User can create their own watch list
