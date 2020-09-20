@@ -1,6 +1,7 @@
 import React from 'react'
 import * as apiMovies from '../../api/apiMovies'
 import MovieCard from './MovieCard/MovieCard'
+import './MovieList.css'
 
 export default class MovieList extends React.Component {
 
@@ -15,7 +16,6 @@ export default class MovieList extends React.Component {
 
   componentDidMount() {
     apiMovies.getMovies({page: this.state.pagination.page}).then(result => {
-      console.log(result.data);
       this.setState({
         movieList: result.data.results
       })
@@ -30,7 +30,7 @@ export default class MovieList extends React.Component {
     )
 
     return (
-      <div>
+      <div className="movie-list">
         {list}
       </div>
     )
