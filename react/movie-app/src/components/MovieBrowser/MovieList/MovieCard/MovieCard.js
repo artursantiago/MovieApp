@@ -1,5 +1,5 @@
 import React from 'react'
-import {MOVIE_DB_IMAGE_URL} from '../../../api/apiMovies'
+import {MOVIE_DB_IMAGE_URL} from '../../../../api/apiMovies'
 import noImage from './noimage.png'
 import './MovieCard.css'
 
