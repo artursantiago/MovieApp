@@ -1,10 +1,10 @@
 import React from 'react'
-import {MOVIE_DB_IMAGE_URL} from '../../../../api/apiMovies'
+import {MOVIE_DB_IMAGE_URL} from '../../../api/apiMovies'
 import noImage from './noimage.png'
 import './MovieCard.css'
 
-export default props => {
-  const {movie} = props
+export default function MovieCard(props) {
+  const {movie} = props;
 
   return (
     <div className="movie-card" style={{backgroundImage: `url(${movie.poster_path ? MOVIE_DB_IMAGE_URL.medium + movie.poster_path : noImage})`}}>

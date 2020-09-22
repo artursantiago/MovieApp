@@ -1,7 +1,7 @@
 import React from 'react'
 import './MovieFilter.css'
 
-export default props => {
+export default function MovieFilter(props) {
   const filters = [
     {key: 'popular', name: 'Popular'},
     {key: 'now_playing', name: 'Now Playing'},
