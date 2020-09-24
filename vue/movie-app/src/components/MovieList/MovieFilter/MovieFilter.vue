@@ -1,7 +1,7 @@
 <template>
   <div>
     <nav>
-      <div v-for="f in filters" :key="f">
+      <div v-for="f in filters" :key="f.key">
         <span :class="`item ${f.key === filter.key ? 'active' : ''}`" @click="() => {onFilterChange(f)}">
         {{f.name}}
         </span>

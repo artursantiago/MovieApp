@@ -1,10 +1,11 @@
 <template>
   <div>
     <MovieFilter :onFilterChange="handleFilterChange" :filter="filter"/>
-    <button @click="infiniteScroll">chama</button>
     <div class="movie-list">
-      <div v-for="(movie, index) in movies" :key="movie" >
-        <MovieCard v-if="movies.length == index + 1" ref="lastMovieCard" :movie="movie" />
+      <div v-for="(movie, index) in movies" :key="movie.id" >
+        <div v-if="movies.length == index + 1" ref="lastMovieCard">
+          <MovieCard id="lastMovieCard" :movie="movie" />
+        </div>
         <MovieCard v-else :movie="movie" />
       </div>
     </div>
@@ -78,9 +79,7 @@ export default {
     infiniteScroll() {
       if (this.loading) return;
 
-      const node = this.$refs.lastMovieCard;
-      console.log(this.$refs);
-      console.log(this.$refs.lastMovieCard);
+      const node = document.querySelector("#lastMovieCard");
 
       const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
