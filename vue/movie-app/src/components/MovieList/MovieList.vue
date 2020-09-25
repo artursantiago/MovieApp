@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Bar/>
     <MovieFilter :onFilterChange="handleFilterChange" :filter="filter"/>
     <div class="movie-list">
       <div v-for="(movie, index) in movies" :key="movie.id" >
@@ -13,14 +14,16 @@
 </template>
 
 <script>
+import Bar from '../NavigationBar/Bar';
 import MovieCard from './MovieCard/MovieCard';
 import MovieFilter from './MovieFilter/MovieFilter';
 import * as apiMovies from '../../api/apiMovies';
 
 export default {
   components: {
-    MovieCard,
-    MovieFilter
+    Bar,
+    MovieFilter,
+    MovieCard
   },
   
   computed: {

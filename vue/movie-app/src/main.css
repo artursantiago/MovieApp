@@ -5,5 +5,8 @@
 }
 
 body {
-  background-color: #adadad;
+  background-image: url('./assets/cinema.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
