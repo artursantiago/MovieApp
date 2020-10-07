@@ -1,6 +1,8 @@
 <template>
   <div class="movie-card">
-      <span class="favorite" @click="addFavorite(movie)" title="Add to my favorite list"><i class="fas fa-heart"></i></span>
+    <span class="favorite" @click="addFavorite(movie)" title="Add to my favorite list">
+      <i class="fas fa-heart"></i>
+    </span>
     <a href="#" class="image">
       <img class="poster" :src="movie.poster_path ? mediumPoster + movie.poster_path : noImage" alt="Movie Poster">
     </a>

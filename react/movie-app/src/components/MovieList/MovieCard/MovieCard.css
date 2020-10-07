@@ -1,69 +1,88 @@
 .movie-card {
+  display: flex;
+  flex-direction: column;
   position: relative;
-
-  background-size: contain;
   width: 200px;
-  height: 300px;
-
-  border-radius: 8px 8px;
-  margin-bottom: 50px;
 }
 
-.movie-card__favorite {
+.image img {
+  width: 200px;
+  border-radius: 8px 8px;
+
+  box-shadow: 5px 5px 30px -10px rgb(255, 255, 255, 0.6);
+}
+
+.favorite {
   position: absolute;
-  padding: 0;
-  right: 5px;
-  top: 4px;
+  top: 8px;
+  right: 8px;
 
-  height: 24px;
-  width: 24px;
+  color: white;
 
-  background: none;
-  border: none;  
-  background-color: rgb(0, 0, 0, 0.3);
+  background-color: rgb(0, 0, 0, 0.7);
   border-radius: 50%;
 
+  text-align: center;
+  line-height: 25px;
+  width: 25px;
+  height: 25px;
   cursor: pointer;
 }
 
-.movie-card__favorite i {
-  width: 16px;
-  text-align: center;
-  color: rgb(255, 255, 255, 0.9);
+.favorite:hover {
+  color: rgb(3,37,65);
+  background-color: rgb(255, 255, 255, 0.7);;
 }
 
-.movie-card__rating {
+.info {
+  width: initial;
+  position: relative;
+  padding: 18px 10px 12px 10px;
+  /* background-color: white; */
+  display: flex;
+  white-space: normal;
+  align-content: flex-start;
+  flex-wrap: wrap;
+
+  color: white;
+}
+
+.rating {
   position: absolute;
-  left: 5px;
-  bottom: -17px;
+  top: -18px;
+  left: 10px;
 
-  border-radius: 50%;
-  border: 2px yellow solid;
-  background-color: #414141;
-  display: inline-block;
-
-  width: 34px;
-  height: 34px;
-  text-align: center;
-  line-height: 34px;
-
-  color: #fff;
-  font-weight: 500;
-}
-
-.movie-card__info {
-  position: absolute;
-  bottom: -60px;
-
-  margin-left: 16px;
-}
-
-.movie-card__info h4 {
   font-weight: 700;
-  font-size: 18px;
-  margin-bottom: 0px;
+  text-align: center;
+
+  height: 32px;
+  width: 32px;
+  line-height: 32px;
+  border: white 2px solid;
+  background-color: rgb(3,37,65);
+  border-radius: 50%;
 }
 
-.movie-card__info span {
-  font-weight: 300;
+.info h2 {
+  font-size: 1.2em;
+  margin: 0;
+  width: 100%;
+  word-wrap: normal;
+  overflow-wrap: break-word;
+  padding: 0;
+  font-weight: 700;
+  /* box-sizing: border-box; */
+}
+
+.info h2 a {
+  color: white;
+  text-decoration: none;
+}
+
+.info p {
+  font-size: 1em;
+  margin: 0;
+  padding: 0;
+  color: rgba(256,256,256,0.6);
+  font-weight: 500;
 }

@@ -32,4 +32,3 @@ nav .item:nth-child(n):hover {
 .item.active {
   background-color: blue;
 }
-

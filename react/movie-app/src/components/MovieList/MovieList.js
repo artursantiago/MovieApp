@@ -3,6 +3,7 @@ import React, {useState, useEffect, useRef, useCallback} from 'react';
 import * as apiMovies from '../../api/apiMovies';
 import MovieCard from './MovieCard/MovieCard';
 import MovieFilter from './MovieFilter/MovieFilter.js';
+import Bar from '../NavigationBar/Bar';
 
 import './MovieList.css';
 
@@ -49,12 +50,15 @@ export default function MovieList() {
   function handleFilterChange(newFilter) {
     if (filter === newFilter)
       return;
+    
     setFilter(newFilter);
     setMovies([]);
+    setPage(1);
   }
 
   return (
     <div>
+      <Bar/>
       <MovieFilter onFilterChange={handleFilterChange} filter={filter}/>
       <div className="movie-list">
         { movies.map((movie, index) => {

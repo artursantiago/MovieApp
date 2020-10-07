@@ -4,7 +4,7 @@
     <MovieFilter :onFilterChange="handleFilterChange" :filter="filter"/>
     <div class="movie-list">
       <div v-for="(movie, index) in movies" :key="movie.id" >
-        <div v-if="movies.length == index + 1" ref="lastMovieCard">
+        <div v-if="movies.length == index + 1">
           <MovieCard id="lastMovieCard" :movie="movie" />
         </div>
         <MovieCard v-else :movie="movie" />
