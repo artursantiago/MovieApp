@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-movie-filter',
@@ -7,7 +7,7 @@ import { Component, Input } from '@angular/core';
       <nav>
         <div *ngFor="let f of filters">
           <span class="item" [class]="f.key == filter.key ? 'active' : ''"
-            (click)="onFilterChange(f)">
+            (click)="edit.emit(f)">
               {{f.name}}\
             </span>
         </div>
@@ -21,8 +21,11 @@ export class MovieFilterComponent {
   @Input()
   filter
 
-  @Input()
-  onFilterChange: Function
+  @Output()
+  edit = new EventEmitter()
+
+  // @Input()
+  // onFilterChange: Function
 
   filters = [
     {key: 'popular', name: 'Popular'},

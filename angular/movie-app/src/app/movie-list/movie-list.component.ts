@@ -1,12 +1,11 @@
-import { Component, OnInit, OnChanges, SimpleChanges, Input } from '@angular/core';
-import { watch } from 'fs';
+import { Component, OnInit } from '@angular/core';
 import * as apiMovies from '../../api/apiMovies'
 
 @Component({
   selector: 'app-movie-list',
   template: `
     <div>
-      <app-movie-filter [filter]="filter" [onFilterChange]="handleFilterChange"></app-movie-filter>
+      <app-movie-filter [filter]="filter" (edit)="handleFilterChange($event)"></app-movie-filter>
       <div class="movie-list">
         <div *ngFor="let movie of movies">
           <!-- ref={lastMovieElementRef}
@@ -19,7 +18,7 @@ import * as apiMovies from '../../api/apiMovies'
   styleUrls: ['./movie-list.component.css']
 })
 
-export class MovieListComponent implements OnInit, OnChanges {
+export class MovieListComponent implements OnInit {
 
   // Data
   movies = []
@@ -27,15 +26,6 @@ export class MovieListComponent implements OnInit, OnChanges {
   page = 1
   hasMore = false
   loading = true
-
-  handleFilterChange(newFilter) {
-    if (this.filter === newFilter)
-      return
-    this.filter = newFilter;
-    this.movies = []
-    this.page = 1
-    
-  }
 
   async getMovies() {
     this.loading = true;
@@ -47,14 +37,19 @@ export class MovieListComponent implements OnInit, OnChanges {
     })
   }
 
+  handleFilterChange(newFilter) {
+    if (this.filter === newFilter)
+      return
+    this.filter = newFilter;
+    this.movies = []
+    this.page = 1
+    
+    this.getMovies();
+  }
+
   constructor() { }
 
   ngOnInit() {
     this.getMovies();
-
-  }
-
-  ngOnChanges(changes: SimpleChanges) {
-    console.log(changes);
   }
 }
