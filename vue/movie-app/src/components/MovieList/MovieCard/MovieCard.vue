@@ -36,7 +36,7 @@ export default {
 
   methods: {
     addFavorite(movie) {
-      alert(`${movie.title} foi adicionado a sua lista de favoritos.`);
+      alert(`${movie.title} has been added to your favorites list.`);
     }
   }
 }
