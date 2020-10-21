@@ -1,14 +1,19 @@
 <template>
-  <MovieList />
+  <div>
+    <Navigation />
+    <MovieList />
+  </div>
 </template>
 
 <script>
 import MovieList from './components/MovieList/MovieList'
+import Navigation from './components/Navigation/Navigation'
 
 export default {
   name: 'App',
   components: {
-    MovieList
+    MovieList,
+    Navigation
   },
 
 }

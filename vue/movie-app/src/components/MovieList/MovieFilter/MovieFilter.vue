@@ -2,7 +2,7 @@
   <div>
     <nav>
       <div v-for="f in filters" :key="f.key">
-        <span :class="`item ${f.key === filter.key ? 'active' : ''}`" @click="() => {onFilterChange(f)}">
+        <span :class="`item ${f.key === filter.key ? 'active' : ''}`" @click="$emit('filterchange', f)">
         {{f.name}}
         </span>
       </div>
@@ -12,7 +12,7 @@
 
 <script>
 export default {
-  props: ['onFilterChange', 'filter'],
+  props: ['filter'],
 
   data() {
     return {

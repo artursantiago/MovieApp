@@ -14,14 +14,14 @@ import {MOVIE_DB_IMAGE_URL} from '../../../api/apiMovies'
   <span class="favorite" on:click={addFavorite(movie)} title="Add to mu favorite list">
     <i class="fas fa-heart"></i>
   </span>
-  <a href class="image">
+  <a href="#" class="image">
     <img class="poster" src={movie.poster_path ? MOVIE_DB_IMAGE_URL.medium + movie.poster_path : noImage} alt="Movie Poster">
   </a>
   <div class="info">
     <div class="rating">
       {movie.vote_average}
     </div>
-    <h2><a href title={movie.title}>{movie.title}</a></h2>
+    <h2><a href="#" title={movie.title}>{movie.title}</a></h2>
     <p>{movie.release_date}</p>
   </div>
 </div>

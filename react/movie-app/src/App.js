@@ -1,11 +1,15 @@
 import React from 'react';
 import './App.css';
 import MovieList from './components/MovieList/MovieList'
+import Navigation from './components/Navigation/Navigation';
 
 
 function App() {
   return (
-    <MovieList/>
+    <div>
+      <Navigation />
+      <MovieList/>
+    </div>
   );
 }
 
