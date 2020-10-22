@@ -2,7 +2,15 @@ import {firebaseAuth, firebaseRef} from '../firebase'
 
 export function signUp(email, password) {
   return firebaseAuth.createUserWithEmailAndPassword(email, password)
-    .then(saveUser)
+    // .then(saveUser)
+}
+
+export function signIn(email, password) {
+  return firebaseAuth.signInWithEmailAndPassword(email, password)
+}
+
+export function signOut() {
+  return firebaseAuth.signOut()
 }
 
 function saveUser(user) {
@@ -12,12 +20,4 @@ function saveUser(user) {
       uid: user.uid
     })
     .then(() => user)
-}
-
-export function signIn(email, password) {
-  return firebaseAuth.signInWithEmailAndPassword(email, password)
-}
-
-export function signOut() {
-  return firebaseAuth.signOut()
 }

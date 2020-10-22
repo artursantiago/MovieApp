@@ -87,3 +87,13 @@
 .modal form .btn {
   width: 100% ;
 }
+
+.modal form .form-type {
+  display: flex;
+  margin: 12px auto 0;
+}
+
+.modal form .form-type b{
+  cursor: pointer;
+  padding-left: 4px;
+}
