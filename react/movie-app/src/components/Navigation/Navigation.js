@@ -4,7 +4,7 @@ import {Context} from '../Auth/AuthContext'
 import history from '../../history'
 
 import logo from '../../assets/logo.png'
-import github from '../../assets/github-white.svg'
+import github from '../../assets/github-logo.svg'
 import './Navigation.css';
 
 export default function Navigation() {
