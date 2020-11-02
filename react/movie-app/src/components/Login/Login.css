@@ -12,7 +12,7 @@
   color: white;
   border-radius: 24px;
 
-  height: 400px;
+  min-height: 400px;
   width: 400px;
 
   position: fixed;
@@ -43,6 +43,12 @@
   text-align: center;
   width: 60%;
   margin: 0 auto;
+}
+
+.modal .error-message {
+  background-color: rgba(255, 255, 255, 8);
+  color: black;
+  border-radius: 8px;
 }
 
 .modal form .field {
@@ -90,7 +96,7 @@
 
 .modal form .form-type {
   display: flex;
-  margin: 12px auto 0;
+  margin: 12px auto 14px;
 }
 
 .modal form .form-type b{

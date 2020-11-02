@@ -1,3 +1,7 @@
+Problema com o https://github.com/ReactTraining/react-router/issues/7415
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

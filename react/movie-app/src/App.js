@@ -1,24 +1,20 @@
-import React, {useState} from 'react';
-import './App.css';
-import MovieList from './components/MovieList/MovieList'
-import Navigation from './components/Navigation/Navigation';
-import Auth from './components/Auth/Auth'
+import React from 'react'
+import { Router } from 'react-router-dom'
+import './App.css'
+import Navigation from './components/Navigation/Navigation'
+
+import { AuthProvider } from './components/Auth/AuthContext'
+import history from './history'
+import Routes from './routes'
 
 function App() {
-
-  const [isModalActive, setIsModalActive] = useState(false);
-  
-  function showSignInModal(value) {
-    console.log(value);
-    setIsModalActive(value);
-  }
-
   return (
-    <div>
-      <Navigation showSignInModal={showSignInModal} />
-      {isModalActive ? <Auth showSignInModal={showSignInModal} /> : ''}
-      {!isModalActive ? <MovieList/> : ''}
-    </div>
+    <AuthProvider>
+      <Navigation/>
+      <Router history={history}>
+        <Routes />
+      </Router>
+    </AuthProvider>
   );
 }
 

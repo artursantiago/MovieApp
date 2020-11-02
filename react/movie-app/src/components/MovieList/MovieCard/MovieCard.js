@@ -1,9 +1,12 @@
-import React from 'react'
+import React, {useContext} from 'react'
+
+import { Context } from '../../Auth/AuthContext'
 import {MOVIE_DB_IMAGE_URL} from '../../../api/apiMovies'
 import noImage from './noimage.png'
 import './MovieCard.css'
 
 export default function MovieCard(props) {
+  const {authenticated} = useContext(Context)
   const {movie} = props;
 
   function addFavorite(movie) {
@@ -12,9 +15,14 @@ export default function MovieCard(props) {
 
   return (
     <div className="movie-card">
-      <span className="favorite" onClick={() => {addFavorite(movie)}} title="Add to my favorite list">
-        <i className="fas fa-heart"></i>
-      </span>
+      {
+        authenticated ?
+          <span className="favorite" onClick={() => {addFavorite(movie)}} title="Add to my favorite list">
+            <i className="fas fa-heart"></i>
+          </span>
+          : ''
+      }
+      
       <a href="#" className="image">
         <img className="poster" src={movie.poster_path ? MOVIE_DB_IMAGE_URL.medium + movie.poster_path : noImage} alt="Movie Poster"/>
       </a>

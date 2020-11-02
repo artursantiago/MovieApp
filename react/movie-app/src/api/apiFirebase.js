@@ -1,4 +1,4 @@
-import {firebaseAuth, firebaseRef} from '../firebase'
+import {firebaseAuth} from '../firebase'
 
 export function signUp(email, password) {
   return firebaseAuth.createUserWithEmailAndPassword(email, password)
@@ -13,11 +13,11 @@ export function signOut() {
   return firebaseAuth.signOut()
 }
 
-function saveUser(user) {
-  return firebaseRef.child(`users/${user.uid}/info`)
-    .set({
-      email: user.email,
-      uid: user.uid
-    })
-    .then(() => user)
-}
+// function saveUser(user) {
+//   return firebaseRef.child(`users/${user.uid}/info`)
+//     .set({
+//       email: user.email,
+//       uid: user.uid
+//     })
+//     .then(() => user)
+// }
