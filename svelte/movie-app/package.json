@@ -4,7 +4,7 @@
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
-    "start": "sirv public"
+    "start": "sirv public --single"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^14.0.0",
@@ -17,6 +17,8 @@
   },
   "dependencies": {
     "axios": "^0.20.0",
+    "firebase": "^8.0.0",
+    "page": "^1.11.6",
     "sirv-cli": "^1.0.0"
   }
 }

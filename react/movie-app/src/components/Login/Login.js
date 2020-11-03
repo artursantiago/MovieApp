@@ -42,8 +42,8 @@ export default function Login() {
           <button className="btn" type="submit">{isNewUser ? 'Sign Up' : 'Sign In'}</button>
             {
               isNewUser ? 
-              <span className="form-type">No account? <b onClick={() => setIsNewUser(false)}>Create one!</b></span>
-              : <span className="form-type">Already an user? <b onClick={() => setIsNewUser(true)}>Sign In</b></span>
+              <span className="form-type">No account? <b onClick={() => setIsNewUser(true)}>Create one!</b></span>
+              : <span className="form-type">Already an user? <b onClick={() => setIsNewUser(false)}>Sign In</b></span>
             }
         </form>
       </div>

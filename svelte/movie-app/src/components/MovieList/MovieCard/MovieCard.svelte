@@ -1,7 +1,9 @@
 <script>
-import {MOVIE_DB_IMAGE_URL} from '../../../api/apiMovies'
+  import AuthStore from '../../../stores/AuthStore.js';
+  import {MOVIE_DB_IMAGE_URL} from '../../../api/apiMovies';
 
-  const noImage = '/assets/noimage.png'
+
+  const noImage = '/assets/noimage.png';
   export let movie;
 
   const addFavorite = (movie) => {
@@ -11,9 +13,11 @@ import {MOVIE_DB_IMAGE_URL} from '../../../api/apiMovies'
 </script>
 
 <div class="movie-card">
-  <span class="favorite" on:click={addFavorite(movie)} title="Add to mu favorite list">
-    <i class="fas fa-heart"></i>
-  </span>
+  {#if $AuthStore.authenticated}
+    <span class="favorite" on:click={addFavorite(movie)} title="Add to my favorite list">
+      <i class="fas fa-heart"></i>
+    </span>
+  {/if}
   <a href="#" class="image">
     <img class="poster" src={movie.poster_path ? MOVIE_DB_IMAGE_URL.medium + movie.poster_path : noImage} alt="Movie Poster">
   </a>

@@ -1,12 +1,12 @@
 <template>
-    <div class="nav">
-      <router-link to="/"><img class="logo" :src="logo" alt="Logo Movie App" /></router-link>
-      <div class="actions">
-        <img class="github active" :src="github" alt="Logo Movie App" />
-        <router-link to="/login" v-if="!authenticated" class="btn">Sign In</router-link>
-        <button v-else class="btn" @click="handleLogout()" >Sign Out</button>
-      </div>
+  <div class="nav">
+    <router-link to="/"><img class="logo" :src="logo" alt="Logo Movie App" /></router-link>
+    <div class="actions">
+      <img class="github active" :src="github" alt="Logo Movie App" />
+      <router-link to="/login" v-if="!authenticated" class="btn">Sign In</router-link>
+      <button v-else class="btn" @click="handleLogout()" >Sign Out</button>
     </div>
+  </div>
 </template>
 
 <script>

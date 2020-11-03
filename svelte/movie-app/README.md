@@ -1,3 +1,6 @@
+Não é spa por padrao 6:50 ->  https://www.youtube.com/watch?v=eohan_OS8N0
+
+
 *Looking for a shareable component template? Go here --> [sveltejs/component-template](https://github.com/sveltejs/component-template)*
 
 ---
