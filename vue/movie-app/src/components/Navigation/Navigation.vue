@@ -1,15 +1,17 @@
 <template>
     <div class="nav">
-      <img class="logo" :src="logo" alt="Logo Movie App" />
+      <router-link to="/"><img class="logo" :src="logo" alt="Logo Movie App" /></router-link>
       <div class="actions">
         <img class="github active" :src="github" alt="Logo Movie App" />
-        <button class="btn" @>Sign In</button>
-        <!-- <button class="btn" >Sign Out</button> -->
+        <router-link to="/login" v-if="!authenticated" class="btn">Sign In</router-link>
+        <button v-else class="btn" @click="handleLogout()" >Sign Out</button>
       </div>
     </div>
 </template>
 
 <script>
+import { handleLogout } from '../../functions/authFunctions'
+
 import logo from '../../assets/logo.png'
 import github from '../../assets/github-logo.svg'
 
@@ -21,6 +23,15 @@ export default {
     github() {
       return github;
     },
+    authenticated() {
+      return this.$store.state.auth.authenticated
+    },
+  },
+
+  methods: {
+    handleLogout() {
+      handleLogout()
+    }
   }
 }
 </script>
@@ -70,6 +81,7 @@ export default {
   /* display: inline-block; */
   /* margin: 15px 30px; */
   text-transform: uppercase;
+  text-decoration: none;
   letter-spacing: 1px;
   font-weight: 700;
   outline: none;
