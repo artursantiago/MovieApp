@@ -1,4 +1,7 @@
-import { Component, Input } from '@angular/core'
+import { Component, Input, OnInit } from '@angular/core'
+import { Store, select } from '@ngrx/store';
+import { Observable } from 'rxjs'
+
 import {MOVIE_DB_IMAGE_URL} from '../../../api/apiMovies'
 import noImage from './noimage.png'
 
@@ -6,7 +9,7 @@ import noImage from './noimage.png'
   selector: 'app-movie-card',
   template: `
     <div class="movie-card">
-      <span class="favorite" (click)="addFavorite(movie)" title="Add to my favorite list">
+      <span *ngIf="(auth$ | async).authenticated" class="favorite" (click)="addFavorite(movie)" title="Add to my favorite list">
         <i class="fas fa-heart"></i>
       </span>
       <a href="#" class="image">
@@ -24,7 +27,9 @@ import noImage from './noimage.png'
   `,
   styleUrls: ['./movie-card.component.css']
 })
-export class MovieCardComponent {
+export class MovieCardComponent implements OnInit{
+
+  auth$: Observable<any>;
 
   @Input()
   movie;
@@ -32,7 +37,13 @@ export class MovieCardComponent {
   MOVIE_DB_IMAGE_URL = MOVIE_DB_IMAGE_URL;
   noImage = noImage;
   
-  constructor() { }
+  constructor(public store: Store<{authenticated: boolean, user: any}>) { }
+
+  ngOnInit(): void {
+    this.auth$ = this.store.pipe(
+      select('AuthReducer')
+    );
+  }
 
   addFavorite(movie) {
     alert(`${movie.title} foi adicionado a sua lista de favoritos.`)
