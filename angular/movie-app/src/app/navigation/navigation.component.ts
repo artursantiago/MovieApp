@@ -10,10 +10,10 @@ import github from '../../assets/github-logo.svg'
   selector: 'app-navigation',
   template: `
     <div class="nav">
-      <a href="/"><img class="logo" [src]="logo" alt="Logo Movie App" /></a>
+      <a routerLink="/"><img class="logo" [src]="logo" alt="Logo Movie App" /></a>
       <div class="actions">
         <img class="github active" [src]="github" alt="Logo Movie App" />
-        <a *ngIf="!(auth$ | async).authenticated" href="/login" class="btn">Sign In</a>
+        <a *ngIf="!(auth$ | async).authenticated" routerLink="/login" class="btn">Sign In</a>
         <button *ngIf="(auth$ | async).authenticated" (click)="logout()" class="btn" >Sign Out</button>
       </div>
     </div>

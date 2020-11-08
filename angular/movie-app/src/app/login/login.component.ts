@@ -1,20 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs'
+import { Router } from '@angular/router';
 
-import { login } from '../store/ngrx'
+import { login, signUp } from '../store/ngrx'
 import { handleLogin, handleSignUp } from '../../functions/authFunctions';
-import { signUp } from 'src/api/apiFirebase';
 
 @Component({
   selector: 'app-login',
   template: `
     <div class="modal-bg">
       <div class="modal">
-        <a href="/" class="exit"><i class="fas fa-times-circle"></i></a>
+        <a routerLink="/" class="exit"><i class="fas fa-times-circle"></i></a>
         <form>
           <h2> {{isNewUser ? 'Sign Up' : 'Sign In'}} </h2>
-          <h2>{{(auth$ | async).authenticated}}</h2>
           <!-- <div v-if="errorMessage" class="error-message">
             <p>{{errorMessage}}</p>
           </div> -->
@@ -43,7 +42,7 @@ export class LoginComponent implements OnInit {
   email = ''
   password = ''
 
-  constructor(private store: Store<{ authenticated: boolean, user: any }>) { }
+  constructor(private store: Store<{ authenticated: boolean, user: any }>, private router: Router) { }
 
   ngOnInit(): void {
     this.auth$ = this.store.pipe(
@@ -55,17 +54,19 @@ export class LoginComponent implements OnInit {
     this.isNewUser = !this.isNewUser;
   }
 
-  async handleFormSubmit() {
+  handleFormSubmit() {
     if (this.isNewUser) {
       handleSignUp(this.email, this.password);
       if (localStorage.getItem('user')) {
         this.store.dispatch(signUp({ user: JSON.parse(localStorage.getItem('user'))}));
+        this.router.navigate([''])
       }
     }
     else {
       handleLogin(this.email, this.password);
       if (localStorage.getItem('user')) {
         this.store.dispatch(login({ user: JSON.parse(localStorage.getItem('user'))}));
+        this.router.navigate([''])
       }
     }
   }
