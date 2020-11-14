@@ -1,8 +1,9 @@
 import React, {useContext} from 'react'
 
+import history from '../../../history'
 import { Context } from '../../Auth/AuthContext'
 import {MOVIE_DB_IMAGE_URL} from '../../../api/apiMovies'
-import noImage from './noimage.png'
+import noImage from '../../../assets/noimage.png'
 import './MovieCard.css'
 
 export default function MovieCard(props) {
@@ -23,15 +24,15 @@ export default function MovieCard(props) {
           : ''
       }
       
-      <a href="#" className="image">
+      <button onClick={() => history.push(`/movie/${movie.id}`)} className="image">
         <img className="poster" src={movie.poster_path ? MOVIE_DB_IMAGE_URL.medium + movie.poster_path : noImage} alt="Movie Poster"/>
-      </a>
+      </button>
 
       <div className="info">
         <div className="rating">
           {movie.vote_average}
         </div>
-        <h2><a href="#" title={movie.title}>{movie.title}</a></h2>
+        <h2><button className="title" onClick={() => history.push(`/movie/${movie.id}`)} title={movie.title}>{movie.title}</button></h2>
         <p>{movie.release_date}</p>
       </div>
     </div>

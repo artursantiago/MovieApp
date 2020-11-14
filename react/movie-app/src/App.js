@@ -10,6 +10,7 @@ import Routes from './routes'
 function App() {
   return (
     <AuthProvider>
+      <div className="fade"></div>
       <Navigation/>
       <Router history={history}>
         <Routes />

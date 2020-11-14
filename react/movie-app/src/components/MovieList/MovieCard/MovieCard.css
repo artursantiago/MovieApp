@@ -5,6 +5,12 @@
   width: 200px;
 }
 
+.image {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
 .image img {
   width: 200px;
   border-radius: 8px 8px;
@@ -74,7 +80,16 @@
   /* box-sizing: border-box; */
 }
 
-.info h2 a {
+
+.info h2 .title {
+  border: none;
+  background: none;
+  font-weight: 700;
+  font-size: 1em;
+  text-align: left;
+  padding: 0;
+  cursor: pointer;
+
   color: white;
   text-decoration: none;
 }
