@@ -9,6 +9,7 @@ let router = new Router({
   routes: [
     { path: '/', name: 'Home', component: () => import('./components/MovieList/MovieList.vue') },
     { path: '/login', name: 'Login', component: () => import('./components/Login/Login.vue')},
+    { path: '/movie/:id', name : 'Movie', component: () => import('./components/Movie/Movie.vue')}
     // { path: '/favorites', name: 'My Favorites', component: () => import('./components/...')}
 
   ]

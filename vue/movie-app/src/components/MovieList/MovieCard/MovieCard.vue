@@ -1,17 +1,17 @@
 <template>
   <div class="movie-card">
-    <span class="favorite" @click="addFavorite(movie)" title="Add to my favorite list">
+    <span v-if="authenticated" class="favorite" @click="addFavorite(movie)" title="Add to my favorite list">
       <i class="fas fa-heart"></i>
     </span>
-    <a href="#" class="image">
+    <router-link :to="'/movie/' + movie.id" class="image">
       <img class="poster" :src="movie.poster_path ? mediumPoster + movie.poster_path : noImage" alt="Movie Poster">
-    </a>
+    </router-link>
     
     <div class="info">
       <div class="rating">
         {{movie.vote_average}}
       </div>
-      <h2><a href="#" :title="movie.title">{{movie.title}}</a></h2>
+      <h2><router-link :to="'/movie/' + movie.id" :title="movie.title">{{movie.title}}</router-link></h2>
       <p>{{movie.release_date}}</p>
     </div>
   </div>
@@ -19,26 +19,23 @@
 
 <script>
 import {MOVIE_DB_IMAGE_URL} from '../../../api/apiMovies';
-import noImage from './noimage.png';
+import noImage from '../../../assets/noimage.png';
 
 export default {
   props: ['movie'],
 
   computed: {
     // The variables could not be loaded directly into html
-    mediumPoster() {
-      return MOVIE_DB_IMAGE_URL.medium;
-    },
-    noImage() {
-      return noImage;
-    }
+    mediumPoster() {return MOVIE_DB_IMAGE_URL.medium;},
+    noImage() {return noImage;},
+    authenticated() {return this.$store.state.auth.authenticated}
   },
 
   methods: {
     addFavorite(movie) {
       alert(`${movie.title} has been added to your favorites list.`);
     }
-  }
+  },
 }
 </script>
 

@@ -46,7 +46,10 @@ export default function Movie(props) {
           </div>
           
           <div>
-          <button className="btn-favorites">Add to my favorites</button>
+            <button className="btn-favorites btn-on">
+              <i class="far fa-bookmark" aria-hidden="true"></i>
+              Add to my favorites
+            </button>
           </div>
           
           <p className="overview">{movie.overview}</p>

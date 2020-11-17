@@ -29,19 +29,19 @@ export const getMovie = async id => {
   return await res;
 }
 
-export const getActors = async id => {
-  return await axios.get(`/movie/${id}/credits`);
-};
+// export const getActors = async id => {
+//   return await axios.get(`/movie/${id}/credits`);
+// };
 
-export const getMovieImages = async id => {
-  return await axios.get(`/movie/${id}/images`, { params: { language: "null" } });
-};
+// export const getMovieImages = async id => {
+//   return await axios.get(`/movie/${id}/images`, { params: { language: "null" } });
+// };
 
-export const getRecommendations = async id => {
-  return await axios.get(`/movie/${id}/recommendations`, {
-    params: {
-      language: "null",
-      page: 1
-    }
-  });
-};
+// export const getRecommendations = async id => {
+//   return await axios.get(`/movie/${id}/recommendations`, {
+//     params: {
+//       language: "null",
+//       page: 1
+//     }
+//   });
+// };

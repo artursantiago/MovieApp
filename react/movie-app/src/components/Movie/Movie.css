@@ -49,6 +49,39 @@
   margin: 0 auto;
 }
 
+.btn-favorites {
+  color: #fff;
+  border: none;
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: opacity ease 0.2s;
+  outline: none;
+}
+
+.btn-favorites i {
+  padding-right: 2px;
+}
+
+.btn-on {
+  background-color: rgb(40, 167, 69);
+  border-color: rgb(40, 167, 69);
+  transition: background-color ease 0.2s;
+}
+
+.btn-on:hover {
+  background-color: rgba(40, 167, 69, 0.5);
+  transition: background-color ease 0.2s;
+}
+
+.btn-off {
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+
 .details .overview {
   font-size: 1.2em;
   font-weight: 300;
