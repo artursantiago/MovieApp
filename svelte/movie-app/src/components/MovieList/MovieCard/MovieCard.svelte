@@ -1,4 +1,5 @@
 <script>
+  import router from 'page';
   import AuthStore from '../../../stores/AuthStore.js';
   import {MOVIE_DB_IMAGE_URL} from '../../../api/apiMovies';
 
@@ -18,14 +19,14 @@
       <i class="fas fa-heart"></i>
     </span>
   {/if}
-  <a href="#" class="image">
+  <button on:click={router('/movie/'+movie.id)} class="image">
     <img class="poster" src={movie.poster_path ? MOVIE_DB_IMAGE_URL.medium + movie.poster_path : noImage} alt="Movie Poster">
-  </a>
+  </button>
   <div class="info">
     <div class="rating">
       {movie.vote_average}
     </div>
-    <h2><a href="#" title={movie.title}>{movie.title}</a></h2>
+    <h2><button on:click={router('/movie/'+movie.id)} class="title" title={movie.title}>{movie.title}</button></h2>
     <p>{movie.release_date}</p>
   </div>
 </div>
@@ -36,6 +37,14 @@
   flex-direction: column;
   position: relative;
   width: 200px;
+}
+
+.image {
+  border: none;
+  background: none;
+  cursor: pointer;
+  
+  outline: none;
 }
 
 .image img {
@@ -107,9 +116,19 @@
   /* box-sizing: border-box; */
 }
 
-.info h2 a {
+
+.info h2 .title {
+  border: none;
+  background: none;
+  font-weight: 700;
+  font-size: 1em;
+  text-align: left;
+  padding: 0;
+  cursor: pointer;
+
   color: white;
   text-decoration: none;
+  outline: none;
 }
 
 .info p {

@@ -30,7 +30,7 @@
   width: 100%;
   height: 82px;
 
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.5);
   padding: 8px 0;
 }
 
