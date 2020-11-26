@@ -13,7 +13,8 @@ import github from '../../assets/github-logo.svg'
       <a routerLink="/"><img class="logo" [src]="logo" alt="Logo Movie App" /></a>
       <div class="actions">
         <img class="github active" [src]="github" alt="Logo Movie App" />
-        <a *ngIf="!(auth$ | async).authenticated" routerLink="/login" class="btn">Sign In</a>
+
+        <button *ngIf="!(auth$ | async).authenticated" routerLink="/login" class="btn">Sign In</button>
         <button *ngIf="(auth$ | async).authenticated" (click)="logout()" class="btn" >Sign Out</button>
       </div>
     </div>

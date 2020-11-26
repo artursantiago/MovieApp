@@ -23,3 +23,8 @@ export const getMovies = params => {
     }
   });
 }
+
+export const getMovie = async id => {
+  const res = await axios.get(`/movie/${id}`)
+  return await res;
+}

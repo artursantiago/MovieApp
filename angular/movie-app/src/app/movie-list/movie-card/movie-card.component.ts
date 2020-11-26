@@ -3,7 +3,7 @@ import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs'
 
 import {MOVIE_DB_IMAGE_URL} from '../../../api/apiMovies'
-import noImage from './noimage.png'
+import noImage from '../../../../src/assets/noimage.png';
 
 @Component({
   selector: 'app-movie-card',
@@ -12,15 +12,15 @@ import noImage from './noimage.png'
       <span *ngIf="(auth$ | async).authenticated" class="favorite" (click)="addFavorite(movie)" title="Add to my favorite list">
         <i class="fas fa-heart"></i>
       </span>
-      <a href="#" class="image">
+      <button [routerLink]="'/movie/' + movie.id" class="image">
         <img class="poster" [src]="movie.poster_path ? MOVIE_DB_IMAGE_URL.medium + movie.poster_path : noImage" alt="Movie Poster"/>
-      </a>
+      </button>
 
       <div class="info">
         <div class="rating">
           {{movie.vote_average}}
         </div>
-        <h2><a href="#" [title]="movie.title">{{movie.title}}</a></h2>
+        <h2><button class="title" [routerLink]="'/movie/' + movie.id" [title]="movie.title">{{movie.title}}</button></h2>
         <p>{{movie.release_date}}</p>
       </div>
     </div>
@@ -37,7 +37,9 @@ export class MovieCardComponent implements OnInit{
   MOVIE_DB_IMAGE_URL = MOVIE_DB_IMAGE_URL;
   noImage = noImage;
   
-  constructor(public store: Store<{authenticated: boolean, user: any}>) { }
+  constructor(
+    public store: Store<{authenticated: boolean, user: any}>
+  ) { }
 
   ngOnInit(): void {
     this.auth$ = this.store.pipe(
