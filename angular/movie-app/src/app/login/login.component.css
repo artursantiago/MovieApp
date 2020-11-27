@@ -47,9 +47,10 @@
 }
 
 .modal .error-message {
-  background-color: rgba(255, 255, 255, 8);
-  color: black;
-  border-radius: 8px;
+  padding: 0.5rem 2rem;
+  margin-bottom: 1rem;
+  background: lightcoral;
+  border-radius: 10px;
 }
 
 .modal form .field {

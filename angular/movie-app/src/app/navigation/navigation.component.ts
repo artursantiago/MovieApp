@@ -5,6 +5,7 @@ import { Observable } from 'rxjs'
 import { Logout } from '../store/ngrx'
 import logo from '../../assets/logo.png';
 import github from '../../assets/github-logo.svg'
+import { handleLogout } from '../../functions/authFunctions';
 
 @Component({
   selector: 'app-navigation',
@@ -36,6 +37,7 @@ export class NavigationComponent implements OnInit {
   }
 
   logout() {
+    handleLogout() 
     this.store.dispatch(new Logout());
   }
 }

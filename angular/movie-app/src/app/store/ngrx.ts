@@ -5,16 +5,8 @@ import {handleLogin, handleLogout, handleSignUp } from '../../functions/authFunc
 enum ActionTypes {
   Login = 'Login',
   Logout = 'Logout',
-  SignUp = 'SignUp'
-}
-
-export const login = createAction(
-  ActionTypes.Login, 
-  props<{ user: any }>()
-)
-
-export class Logout implements Action {
-  readonly type = 'Logout'
+  SignUp = 'SignUp',
+  SetErrorMessage = 'SetErrorMessage'
 }
 
 export const signUp = createAction(
@@ -22,8 +14,24 @@ export const signUp = createAction(
   props<{ user: any }>()
 )
 
+export const login = createAction(
+  ActionTypes.Login, 
+  props<{ user: any }>()
+)
+
+export const setErrorMessage = createAction(
+  ActionTypes.SetErrorMessage, 
+  props<{ errorMessage: any }>()
+)
+
+export class Logout implements Action {
+  readonly type = 'Logout'
+}
+
+
 const INITIAL_STATE = {
   authenticated: false,
+  errorMessage: '',
   user: null
 }
 
@@ -35,6 +43,9 @@ export const reducer = (state = INITIAL_STATE, action: any) => {
       return { ...state, authenticated: false, user: null };
     case 'SignUp':
       return { ...state, authenticated: true, user: action.user };
+    case 'SetErrorMessage':
+      console.log(action);
+      return {...state, errorMessage: action.errorMessage}
     default:
       return state;
   }

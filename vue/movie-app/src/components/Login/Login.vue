@@ -1,12 +1,12 @@
 <template>
   <div class="modal-bg">
     <div class="modal">
-      <router-link to="/" class="exit"><i class="fas fa-times-circle"></i></router-link>
+      <button @click="exitLogin" class="exit"><i class="fas fa-times-circle"></i></button>
       <form @submit.prevent>
         <h2> {{isNewUser ? 'Sign Up' : 'Sign In'}} </h2>
-        <!-- <div v-if="errorMessage" class="error-message">
+        <div v-if="errorMessage" class="error-message">
           <p>{{errorMessage}}</p>
-        </div> -->
+        </div>
         <div class="field">
           <label for="email">E-mail</label>
           <input v-model="email" type="email" name="email" required/>
@@ -16,8 +16,8 @@
           <input v-model="password" type="password" name="password" required/>
         </div>
         <button class="btn" type="submit" @click="handleFormSubmit">{{isNewUser ? 'Sign Up' : 'Sign In'}}</button>
-          <span v-if="!isNewUser" class="form-type">No account? <b @click="isNewUser = true">Create one!</b></span>
-          <span v-else class="form-type">Already an user? <b @click="isNewUser = false">Sign In</b></span>
+          <span v-if="isNewUser" class="form-type">Already an user? <b @click="isNewUser = false">Sign In</b></span>
+          <span v-else class="form-type">No account? <b @click="isNewUser = true">Create one!</b></span>
       </form>
     </div>
   </div>
@@ -27,6 +27,12 @@
 import { handleLogin, handleSignUp } from '../../functions/authFunctions'
 
 export default {
+  computed: {
+    errorMessage() {
+      return this.$store.state.auth.errorMessage;
+    }
+  },
+
   data() {
     return {
       isNewUser: false,
@@ -42,6 +48,11 @@ export default {
         handleSignUp(this.email, this.password)
       else
         handleLogin(this.email, this.password)
+    },
+
+    exitLogin() {
+      this.$router.push('/')
+      this.$store.commit('auth/setErrorMessage', "")
     }
   }
 }
@@ -97,9 +108,10 @@ export default {
 }
 
 .modal .error-message {
-  background-color: rgba(255, 255, 255, 8);
-  color: black;
-  border-radius: 8px;
+  padding: 0.5rem 2rem;
+  margin-bottom: 1rem;
+  background: lightcoral;
+  border-radius: 10px;
 }
 
 .modal form .field {

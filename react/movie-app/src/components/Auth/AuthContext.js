@@ -6,10 +6,10 @@ const Context = createContext();
 
 function AuthProvider({ children }) {
   
-  const { authenticated, handleLogin, handleLogout, handleSignUp } = useAuth()
+  const { authenticated, errorMessage, setErrorMessage, handleLogin, handleLogout, handleSignUp } = useAuth()
 
   return (
-    <Context.Provider value={{authenticated, handleLogin, handleLogout, handleSignUp}}>
+    <Context.Provider value={{authenticated, errorMessage, setErrorMessage, handleLogin, handleLogout, handleSignUp}}>
       {children}
     </Context.Provider>
   )

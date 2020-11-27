@@ -5,7 +5,7 @@ import history from '../../../history'
 
 export default function useAuth() {
   const [authenticated, setAuthenticated] = useState(false)
-  // const [errorMessage, setErrorMessage] = useState("")
+  const [errorMessage, setErrorMessage] = useState("")
 
   function handleLogin (email, password) {
     api.signIn(email, password)
@@ -13,14 +13,13 @@ export default function useAuth() {
       localStorage.setItem("user_uid", result.user.uid)
       setAuthenticated(true)
       history.push('/')
-      // Insert new user on firebase
-      // Call firebase for the user data
+      setErrorMessage("");
     })
     .catch(error => {
-      // if (error.code === "auth/wrong-password")
-      //   setErrorMessage("Wrong Password")
-      // else
-      //   setErrorMessage(error.message)
+      if (error.code === "auth/wrong-password")
+        setErrorMessage("Wrong Password")
+      else
+        setErrorMessage(error.message)
       console.log(error)
     })
   }
@@ -33,21 +32,21 @@ export default function useAuth() {
   function handleSignUp(email, password) {
     api.signUp(email, password)
     .then(result => {
-      alert(result);
-      // Insert new user on firebase
-      // Call firebase for the user data
       localStorage.setItem("user_uid", result.user.uid)
+      setAuthenticated(true)
+      history.push('/')
+      setErrorMessage("");
     })
     .catch(error => {
-      // if (error.code === "auth/email-already-in-use")
-      //   setErrorMessage("Email already exists");
-      // else if (error.code === "auth/weak-password")
-      //   setErrorMessage("Password should be at least 6 characters")
-      // else
-      //   setErrorMessage(error.message)
+      if (error.code === "auth/email-already-in-use")
+        setErrorMessage("Email already exists");
+      else if (error.code === "auth/weak-password")
+        setErrorMessage("Password should be at least 6 characters")
+      else
+        setErrorMessage(error.message)
       console.log(error);
     })
   }
 
-  return { authenticated, handleLogin, handleLogout, handleSignUp }
+  return { authenticated, errorMessage, setErrorMessage, handleLogin, handleLogout, handleSignUp }
 }

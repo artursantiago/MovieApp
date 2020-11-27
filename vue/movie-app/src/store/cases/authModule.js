@@ -1,6 +1,7 @@
 const getDefaultState = () => {
   return {
     authenticated: false,
+    errorMessage: '',
     user: {},
   }
 }
@@ -16,6 +17,9 @@ export default {
     },
     user(state) {
       return state.user
+    },
+    errorMessage(state) {
+      return state.errorMessage
     }
   },
 
@@ -25,6 +29,9 @@ export default {
     },
     setUser(state, user) {
       state.user = user
+    },
+    setErrorMessage(state, errorMessage) {
+      state.errorMessage = errorMessage
     },
     resetState(state) {
       Object.assign(state, getDefaultState())
