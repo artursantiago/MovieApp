@@ -1,5 +1,7 @@
 <script>
+  import router from 'page';
   import { handleLogin,handleSignUp } from '../../functions/AuthFunctions.js';
+  import AuthStore from '../../stores/AuthStore.js';
 
   let isNewUser = false;
   let email;
@@ -16,11 +18,22 @@
     isNewUser = !isNewUser;
   }
 
+  function exitLogin() {
+    router('/');
+    AuthStore.update(() => {
+      return {
+        authenticated: false,
+        errorMessage: '',
+        user: {uid:''},
+      }
+    });
+  }
+
 </script>
 
 <div class="modal-bg">
   <div class="modal">
-    <a href="/" class="exit"><i class="fas fa-times-circle"></i></a>
+    <button on:click={exitLogin} class="exit"><i class="fas fa-times-circle"></i></button>
     <form on:submit|preventDefault={handleFormSubmit}>
       <h2>
         {isNewUser ? 'Sign Up' : 'Sign In'}
@@ -31,6 +44,12 @@
           <p>{errorMessage}</p>
         </div> : ''
       }  -->
+      {#if $AuthStore.errorMessage}
+          <div class="error-message">
+            <p>{$AuthStore.errorMessage}</p>
+          </div>
+      {/if}
+
       <div class="field">
         <label for="email">E-mail</label>
         <input type="email" name="email" bind:value={email} required/>
@@ -47,9 +66,9 @@
         {/if}
       </button>
         {#if isNewUser}
-          <span class="form-type">No account? <b on:click={toggleIsNewUser}>Create one!</b></span>
+          <span class="form-type">Already an user? <b on:click={toggleIsNewUser}>Sign In</b></span>
         {:else}
-        <span class="form-type">Already an user? <b on:click={toggleIsNewUser}>Sign In</b></span>
+          <span class="form-type">No account? <b on:click={toggleIsNewUser}>Create one!</b></span>
         {/if}
     </form>
   </div>
@@ -106,9 +125,10 @@
 }
 
 .modal .error-message {
-  background-color: rgba(255, 255, 255, 8);
-  color: black;
-  border-radius: 8px;
+  padding: 0.5rem 2rem;
+  margin-bottom: 1rem;
+  background: lightcoral;
+  border-radius: 10px;
 }
 
 .modal form .field {
