@@ -1,6 +1,4 @@
-import { state } from '@angular/animations';
 import { Action, createAction, props } from '@ngrx/store';
-import {handleLogin, handleLogout, handleSignUp } from '../../functions/authFunctions'
 
 enum ActionTypes {
   Login = 'Login',
@@ -44,7 +42,6 @@ export const reducer = (state = INITIAL_STATE, action: any) => {
     case 'SignUp':
       return { ...state, authenticated: true, user: action.user };
     case 'SetErrorMessage':
-      console.log(action);
       return {...state, errorMessage: action.errorMessage}
     default:
       return state;

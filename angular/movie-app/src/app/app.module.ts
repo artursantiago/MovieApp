@@ -10,7 +10,6 @@ import { reducer as AuthReducer} from './store/ngrx'
 import { MovieCardComponent } from './movie-list/movie-card/movie-card.component';
 import { MovieFilterComponent } from './movie-list/movie-filter/movie-filter.component';
 import { NavigationComponent } from './navigation/navigation.component';
-import { MovieComponent } from './movie/movie.component';
 
 @NgModule({
   declarations: [

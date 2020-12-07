@@ -60,6 +60,10 @@ export class LoginComponent implements OnInit {
 
   toggleIsNewUser() {
     this.isNewUser = !this.isNewUser;
+    this.store.dispatch(setErrorMessage({ errorMessage: '' }))
+    localStorage.removeItem('errorMessage')
+    this.email = ''
+    this.password = ''
   }
 
   handleFormSubmit() {

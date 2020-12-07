@@ -91,7 +91,7 @@ export class MovieComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.auth$ = this.store.pipe(
-      // select('AuthReducer')
+      select('AuthReducer')
     );
 
     this.route.params.subscribe(params => {

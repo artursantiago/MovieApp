@@ -24,9 +24,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* position: fixed; */
-  /* top: 0; */
-  /* left: 0; */
   width: 100%;
   height: 82px;
 
@@ -52,7 +49,6 @@
   cursor: pointer;
 }
 
-
 .btn {
   border: none;
   font-family: inherit;
@@ -61,8 +57,6 @@
   background: none;
   cursor: pointer;
   padding: 8px 30px;
-  /* display: inline-block; */
-  /* margin: 15px 30px; */
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 1px;

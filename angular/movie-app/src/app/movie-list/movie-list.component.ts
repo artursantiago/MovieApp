@@ -8,8 +8,6 @@ import * as apiMovies from '../../api/apiMovies'
       <app-movie-filter [filter]="filter" (edit)="handleFilterChange($event)"></app-movie-filter>
       <div class="movie-list">
         <div *ngFor="let movie of movies">
-          <!-- ref={lastMovieElementRef}
-          <div><app-movie-card [movie]="movie"></app-movie-card></div> -->
           <div><app-movie-card [movie]="movie"></app-movie-card></div>
         </div>
       </div>

@@ -24,9 +24,6 @@ export class MovieFilterComponent {
   @Output()
   edit = new EventEmitter()
 
-  // @Input()
-  // onFilterChange: Function
-
   filters = [
     {key: 'popular', name: 'Popular'},
     {key: 'now_playing', name: 'Now Playing'},

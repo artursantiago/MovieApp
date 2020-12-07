@@ -12,12 +12,3 @@ export function signIn(email, password) {
 export function signOut() {
   return firebaseAuth.signOut()
 }
-
-// function saveUser(user) {
-//   return firebaseRef.child(`users/${user.uid}/info`)
-//     .set({
-//       email: user.email,
-//       uid: user.uid
-//     })
-//     .then(() => user)
-// }

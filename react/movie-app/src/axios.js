@@ -9,7 +9,4 @@ const axiosMovies = axios.create({
   },
 })
 
-axiosMovies.CancelToken = axios.CancelToken;
-axiosMovies.isCancel = axios.isCancel;
-
 export default axiosMovies;

@@ -28,7 +28,7 @@ export class NavigationComponent implements OnInit {
   logo = logo;
   github = github;
 
-  constructor(private store: Store<{ authenticated: boolean, user: any }>) { }
+  constructor(public store: Store<{ authenticated: boolean, user: any }>) { }
 
   ngOnInit(): void {
     this.auth$ = this.store.pipe(

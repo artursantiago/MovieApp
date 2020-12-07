@@ -33,6 +33,14 @@ export default {
     }
   },
 
+  watch: {
+    isNewUser() {
+      this.$store.commit('auth/setErrorMessage', "")
+      this.email = ''
+      this.password = ''
+    }
+  },
+
   data() {
     return {
       isNewUser: false,

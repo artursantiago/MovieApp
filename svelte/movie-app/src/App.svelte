@@ -1,5 +1,4 @@
 <script>
-  import { onMount } from 'svelte';
   import router from 'page';
 
   import MovieList from './components/MovieList/MovieList.svelte';
@@ -18,8 +17,6 @@
   }, () => component = Movie)
 
   router.start();
-
-  onMount(() => console.log('mounted'));
 </script>
 
 <main>

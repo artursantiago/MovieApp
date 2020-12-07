@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react'
+import React, {useState, useContext, useEffect} from 'react'
 
 import { Context } from '../Auth/AuthContext'
 import history from '../../history'
@@ -7,6 +7,14 @@ import './Login.css'
 export default function Login() {
   const { handleLogin, handleSignUp, errorMessage, setErrorMessage } = useContext(Context)
   const [isNewUser, setIsNewUser] = useState(false)
+
+  useEffect(() => {
+    setErrorMessage('');
+    document.querySelectorAll('form input').forEach(input => {
+      input.value = '';
+    });
+  }, [isNewUser])
+
 
   function handleFormSubmit(e) {
     e.preventDefault()

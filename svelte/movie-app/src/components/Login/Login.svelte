@@ -16,6 +16,15 @@
 
   function toggleIsNewUser() {
     isNewUser = !isNewUser;
+    AuthStore.update(() => {
+      return {
+        authenticated: false,
+        errorMessage: '',
+        user: {uid:''},
+      }
+    });
+    email = '';
+    password = ''
   }
 
   function exitLogin() {
@@ -38,12 +47,6 @@
       <h2>
         {isNewUser ? 'Sign Up' : 'Sign In'}
       </h2>
-      <!-- {
-        errorMessage ? 
-        <div class="error-message">
-          <p>{errorMessage}</p>
-        </div> : ''
-      }  -->
       {#if $AuthStore.errorMessage}
           <div class="error-message">
             <p>{$AuthStore.errorMessage}</p>
@@ -82,7 +85,6 @@
   left: 0;
   right: 0;
   bottom: 0;
-  /* background-color: white; */
 }
 
 .modal {

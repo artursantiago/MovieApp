@@ -13,4 +13,3 @@ const config = {
 firebase.initializeApp(config)
 
 export const firebaseAuth = firebase.auth()
-// export const firebaseRef = firebase.database().ref()

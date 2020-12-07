@@ -8,7 +8,6 @@ import * as apiMovies from '../../api/apiMovies'
   let movies = []
   let filter = {key: 'popular', name: 'Popular'}
   let page = 1
-  // let hasMore = false
   let loading = true
 
   const handleFilterChange = (event) => {
@@ -27,7 +26,6 @@ import * as apiMovies from '../../api/apiMovies'
     await apiMovies.getMovies({page: page, filter: filter.key})
     .then(res => {
       movies = [...movies, ...res.data.results]
-      // hasMore = page < res.data.total_pages
       loading = false
     })
   }
